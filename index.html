@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<title> Map coordinates </title>
+
+
+<link rel="stylesheet" href="http://ui-grid.info/release/ui-grid.css" type="text/css">
+<link rel="stylesheet" href="index.css"/>
+</head>
+
+<body ng-controller="indexCtrl">
+
+  <div>
+    <header class="header--style">
+      ENTER DATA
+    </header>
+  </div>
+
+  <div>
+    <input class="text--style" type="text" placeholder="Enter name here" id="nameVal" ng-model="nameValue" />
+
+    <input class="text--style" type="text" placeholder="Enter coordinates here" id="longLat" ng-model="longLat" />
+
+    <input class="text--style" type="text" placeholder="Enter Sheet name" id="longLat" ng-model="filename" />
+    
+    <button class="btn-style-1" ng-click="getVal()"> Submit </button>
+
+    <button class="btn-style-2" ng-click="exportToExcel('#myGrid',filename)">
+      Export to Excel</button>
+      <button class="btn-style-2" ng-click="exportToJSON()">
+        Export JSON</button>
+  </div>
+
+  <div id="myGrid">
+    <table border="1">
+      <thead>
+        <tr class="table-header">
+          <th>NAME</th>
+          <th>LATTITUDE</th>
+          <th>LONGITUDE</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tbody ng-repeat="item in tabledata">
+        <tr>
+          <td>{{item.name}}</td>
+          <td>{{item.latitude}}</td>
+          <td>{{item.longitude}}</td>
+        </tr>
+      </tbody>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+  <script data-require="jquery@*" data-semver="2.1.4" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  <script src="http://ui-grid.info/release/ui-grid.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.js" integrity="sha512-UNbeFrHORGTzMn3HTt00fvdojBYHLPxJbLChmtoyDwB6P9hX5mah3kMKm0HHNx/EvSPJt14b+SlD8xhuZ4w9Lg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="index.js"></script>
+  <script src="indexController.js"></script>
+  <script type="text/javascript" src="geopoint.js"></script>
+</body>
+
+</html>
